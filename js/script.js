@@ -56,5 +56,45 @@ async function fetchCountries(){
 
 //CRIANDO A FUNÇÃO RENDER//
 function render(){
+    renderCountryList();
+    renderFavorites();
+    renderSummary();
+
+    handleCountryButtons();
+
+}
+
+//CRIANDO UM HTML PARA MOSTRAR NA TELA //
+function renderCountryList(){
+    let countriesHTML = "<div>";
+
+    allCountries.forEach(country =>{
+        const{ name, flag, id, population}= country;
+
+        const countryHTML = `
+            <div class='country'>
+                <div>
+                    fsdsa
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+            </div>
+        
+        `;
+
+        countriesHTML += countryHTML;   //COLOCANDO NO COUNTRIESHTML AS DIVS//
+    });
+
+    tabCountries.innerHTML = countriesHTML;  // VAI RECEBER O HTML//
+}
+function renderFavorites(){
+
+}
+function renderSummary(){
+
+}
+function handleCountryButtons(){
 
 }
