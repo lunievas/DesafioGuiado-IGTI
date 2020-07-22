@@ -74,14 +74,18 @@ function renderCountryList(){
         const countryHTML = `
             <div class='country'>
                 <div>
-                    fsdsa
+                    <a id="${id}" class="waves-effect waves-light btn"> +</a>
                 </div>
                 <div>
+                    <img src="${flag}" alt="${name}">
                 </div>
                 <div>
+                    <ul>
+                        <li>${name}</li>
+                        <li>${population}</li>
+                    </ul>
                 </div>
             </div>
-        
         `;
 
         countriesHTML += countryHTML;   //COLOCANDO NO COUNTRIESHTML AS DIVS//
