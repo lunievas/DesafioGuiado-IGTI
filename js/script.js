@@ -19,9 +19,9 @@ let numberFormat = null;
 //BUSCANDO OS DADOS COM DOM, IMPLEMENTANDO A FUNC START//
 window.addEventListener('load', () =>{
     tabCountries = document.querySelector('#tabCountries')
-    tabFavorites = document.querySelector('#tabCountries')
+    tabFavorites = document.querySelector('#tabFavorites')
     countCountries = document.querySelector('#countCountries')
-    countFavorites = document.querySelector('#countCountries')
+    countFavorites = document.querySelector('#countFavorites')
 
     totalPopulationList = document.querySelector('#totalPopulationList')
     totalPopulationFavorites = document.querySelector('#totalPopulationFavorites')
@@ -37,6 +37,7 @@ window.addEventListener('load', () =>{
 async function fetchCountries(){
     const res = await fetch('https://restcountries.eu/rest/v2/all');
     const json = await res.json();
+
     allCountries = json.map(country =>{
         const {numericCode,translations, population, flag} =  country;
 
@@ -50,6 +51,7 @@ async function fetchCountries(){
             flag
         };
     });
+        favoritesCountries = allCountries;
         render(); 
 }
 
@@ -91,10 +93,42 @@ function renderCountryList(){
         countriesHTML += countryHTML;   //COLOCANDO NO COUNTRIESHTML AS DIVS//
     });
 
+    countriesHTML += '</div>';
+
     tabCountries.innerHTML = countriesHTML;  // VAI RECEBER O HTML//
 }
-function renderFavorites(){
 
+//MOSTRANDO OS ITENS TAMBEM COM TEMPLATES LITERALS//    
+function renderFavorites(){
+    let favoritesHTML = '<div>';
+
+    favoritesCountries.forEach(country =>{
+        const{ name, flag, id, population}= country;
+
+        const favoriteCountryHTML = `
+            <div class='country'>
+                <div>
+                    <a id="${id}" class="waves-effect waves-light btn red darken-4"> +</a>
+                </div>
+                <div>
+                    <img src="${flag}" alt="${name}">
+                </div>
+                <div>
+                    <ul>
+                        <li>${name}</li>
+                        <li>${population}</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+
+        favoritesHTML += favoriteCountryHTML;
+
+    });
+
+
+    favoritesHTML += '</div>';
+    tabFavorites.innerHTML = favoritesHTML;
 }
 function renderSummary(){
 
