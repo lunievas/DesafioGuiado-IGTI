@@ -51,7 +51,6 @@ async function fetchCountries(){
             flag
         };
     });
-        favoritesCountries = allCountries;
         render(); 
 }
 
@@ -108,7 +107,7 @@ function renderFavorites(){
         const favoriteCountryHTML = `
             <div class='country'>
                 <div>
-                    <a id="${id}" class="waves-effect waves-light btn red darken-4"> +</a>
+                    <a id="${id}" class="waves-effect waves-light btn red darken-4"> -</a>
                 </div>
                 <div>
                     <img src="${flag}" alt="${name}">
@@ -131,6 +130,19 @@ function renderFavorites(){
     tabFavorites.innerHTML = favoritesHTML;
 }
 function renderSummary(){
+    countCountries.textContent =  allCountries.length;
+    countFavorites.textContent =  favoritesCountries.length;
+
+    const totalPopulation = allCountries.reduce((acc,curr)=>{
+        return acc + curr.population;
+    }, 0);
+
+    const totalFavorites = favoritesCountries.reduce((acc,curr)=>{
+        return acc + curr.population;
+    }, 0);
+
+    totalPopulationList.textContent = totalPopulation;
+    totalPopulationFavorites.textContent = totalFavorites;
 
 }
 function handleCountryButtons(){
