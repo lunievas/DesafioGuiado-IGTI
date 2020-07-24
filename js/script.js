@@ -145,6 +145,8 @@ function renderSummary(){
     totalPopulationFavorites.textContent = totalFavorites;
 
 }
+
+///FUNÇÃO QUE CRIA OS BOTOES DE FAVORITOS//
 function handleCountryButtons(){
     const countryButtons = Array.from(tabCountries.querySelectorAll('.btn'));
     const favoriteButtons = Array.from(tabFavorites.querySelectorAll('.btn'));
@@ -159,10 +161,20 @@ function handleCountryButtons(){
 }
 
 function addToFavorites(id){
+    const countryToAdd =  allCountries.find(country => country.id ===id);
 
+    favoritesCountries = [...favoritesCountries, countryToAdd];
+    
+    //ORDENANDO POR LETRA A E B//
+    favoritesCountries.sort((a,b) =>{
+        return a.name.localeCompare(b.name);
+    });
 
+    allCountries = allCountries.filter(country => country.id !== id); //tira do vetor allcountries//
+
+    render();
 }
 
 function removeFromFavorites(id){
-    
+
 }
