@@ -176,5 +176,16 @@ function addToFavorites(id){
 }
 
 function removeFromFavorites(id){
+    const countryToRemove =  favoritesCountries.find(country => country.id ===id);
+
+    allCountries = [...allCountries, countryToRemove];
+    
+    allCountries.sort((a,b) =>{
+        return a.name.localeCompare(b.name);
+    });
+
+    favoritesCountries = favoritesCountries.filter(country => country.id !== id); //tira do vetor allcountries//
+
+    render();
 
 }
