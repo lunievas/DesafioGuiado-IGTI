@@ -146,5 +146,23 @@ function renderSummary(){
 
 }
 function handleCountryButtons(){
+    const countryButtons = Array.from(tabCountries.querySelectorAll('.btn'));
+    const favoriteButtons = Array.from(tabFavorites.querySelectorAll('.btn'));
+    
+    countryButtons.forEach(button =>{
+        button.addEventListener('click', () => addToFavorites(button.id));
+    });
+    favoriteButtons.forEach(button =>{
+        button.addEventListener('click', () => removeFromFavorites(button.id));
+    });
+    
+}
 
+function addToFavorites(id){
+
+
+}
+
+function removeFromFavorites(id){
+    
 }
